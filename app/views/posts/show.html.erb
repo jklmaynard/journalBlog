@@ -11,29 +11,33 @@
 
   <div class="col-md-12">
     <% if @post.comments.any? %>
-        <h4>Comments:</h4>
-        <ul>
-          <% @post.comments.each do |comment| %>
-            <li><%= comment.body %></li>
-          <% end %>
-        </ul>
+      <h4>Comments:</h4>
+        <% @post.comments.each do |comment| %>
+          <div class="col-md-12">
+            <%= comment.body %>
+            <%= link_to "Edit", edit_post_comment_path(comment.post_id, comment.id) %>
+            <%= link_to "Delete", post_comment_path(comment.post_id, comment.id),
+                                  :data => {:confirm => "Sure you wanna?",
+                                            :method => "delete"} %>
+          </div>
+        <% end %>
     <% end %>
   </div>
 
   <div class="col-md-12">
     <%= link_to "Add comment", new_post_comment_path(@post),
-                  :class => "btn btn-sm btn-success" %>
+                                  :class => "btn btn-sm btn-success" %>
   </div>
   <div class="col-md-12">
     <%= link_to "Edit", edit_post_path,
-                  :class => "btn btn-sm btn-info" %>
+                                  :class => "btn btn-sm btn-info" %>
     <%= link_to "Delete", post_path(@post),
-                  :data => {:confirm => "Sure you wanna do that?",
-                            :method => "delete" },
-                  :class => "btn btn-sm btn-danger",
-                  :style => "margin: 10px 0;" %>
+                                  :data => {:confirm => "Sure you wanna do that?",
+                                            :method => "delete" },
+                                  :class => "btn btn-sm btn-danger",
+                                  :style => "margin: 10px 0;" %>
     <%= link_to "Return to posts", posts_path,
-                  :class => "btn btn-sm btn-primary" %>
+                                  :class => "btn btn-sm btn-primary" %>
   </div>
 
 </div>
