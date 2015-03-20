@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>How About a Journal Blog?</h1>
+
+  <% if @posts.any? %>
+    <h4>Your Posts:</h4>
+
+    <ul>
+      <% @recipes.each do |recipe| %>
+        <li>post.title</li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>
+      No posts yet!
+    </p>
+  <% end %>
+</div>
