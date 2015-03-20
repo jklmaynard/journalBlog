@@ -3,12 +3,13 @@
 
   <% if @post.errors.any? %>
     <h3>Oops. Some errors occured. Try again?</h3>
-    <ul>
+      <ul>
       <% @post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
         <% end %>
-    </ul>
-    <% else %>
+      </ul>
+    <% end %>
+    
     <%= form_for @post do |f| %>
       <div class="form-group">
         <%= f.label :title %>
@@ -21,7 +22,6 @@
       <div class="form-group">
         <%= f.submit :class => "btn btn-primary" %>
       </div>
-      <% end %>
   <% end %>
 
 </div>

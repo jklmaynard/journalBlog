@@ -3,13 +3,14 @@
   <h3><%= @post.title %></h3>
   <p><%= @post.body %></p>
 
+  <%= link_to "Edit", edit_post_path,
+                :class => "btn btn-sm btn-info" %>
   <%= link_to "Delete", post_path(@post),
                 :data => {:confirm => "Sure you wanna do that?",
                           :method => "delete" },
-                :class => "btn btn-sm btn-danger" %>
-  <br>
-  <%= link_to "Return to posts", posts_path,
-                :class => "btn btn-sm btn-primary",
+                :class => "btn btn-sm btn-danger",
                 :style => "margin: 10px 0;" %>
+  <%= link_to "Return to posts", posts_path,
+                :class => "btn btn-sm btn-primary" %>
 
 </div>
