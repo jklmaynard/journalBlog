@@ -7,11 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= flash[:notice] %>
-<%= flash[:alert] %>
-
-<%= yield %>
-
+  <div class="container">
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <nav class="navbar navbar-default" role="navigation">
+      <ul class="nav navbar-nav navbar-left">
+        <a class="navbar-brand" href="/">The Journal Blog</a>
+      </ul>
+      <ul class="navbar navbar-nav navbar pull-right">
+        <% if user_signed_in? %>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+        <li> <%= link_to "Sign up", new_user_registration_path %> </li>
+        <li> <%= link_to "Log in", new_user_session_path %> </li>
+        <% end %>
+      </ul>
+    </nav>
+    <%= yield %>
+  </div>
 </body>
 </html>
