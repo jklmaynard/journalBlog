@@ -4,7 +4,7 @@ describe "user editing functionality" do
   it 'will allow user to edit a post' do
     post = FactoryGirl.create(:post)
     visit post_path(post)
-    click_on 'Edit'
+    click_on 'Edit Post'
     fill_in 'Title', :with => "New Title"
     click_on 'Update Post'
     expect(page).to have_content "Your post has been updated!"
@@ -13,7 +13,7 @@ describe "user editing functionality" do
   it 'will allow user to delete a post' do
     post = FactoryGirl.create(:post)
     visit post_path(post)
-    click_on 'Delete'
+    click_on 'Delete Post'
     expect(page).to have_content "Your post has been deleted!"
   end
 end
