@@ -31,5 +31,4 @@ describe 'Comment functionality' do
     expect(page).to have_no_content comment.body
   end
 
-    pending "when more specs are needed"
 end
