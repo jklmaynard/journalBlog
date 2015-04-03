@@ -24,20 +24,28 @@
       <% end %>
     <% end %>
   </div>
-
-  <div class="col-md-12">
-    <%= link_to "Add Comment", new_post_comment_path(@post),
+  <% if user_signed_in? %>
+    <div class="col-md-12">
+      <%= link_to "Add Comment", new_post_comment_path(@post),
                                   :class => "btn btn-sm btn-success" %>
-  </div>
-  <div class="col-md-12">
-    <%= link_to "Edit Post", edit_post_path,
-                                  :class => "btn btn-sm btn-info" %>
-    <%= link_to "Delete Post", post_path(@post),
-                                  :data => {:confirm => "Sure you wanna do that?",
-                                            :method => "delete" },
-                                  :class => "btn btn-sm btn-danger",
-                                  :style => "margin: 10px 0;" %>
-    <%= link_to "Return to posts", posts_path,
+    </div>
+  <% else %>
+    <div class="col-md-12">
+      <%= link_to "Sign in to comment", new_user_session_path %>
+    </div>
+  <% end %>
+
+    <div class="col-md-12">
+    <% if @post.user == current_user %>
+        <%= link_to "Edit Post", edit_post_path,
+                                      :class => "btn btn-sm btn-info" %>
+        <%= link_to "Delete Post", post_path(@post),
+                                      :data => {:confirm => "Sure you wanna do that?",
+                                                :method => "delete" },
+                                      :class => "btn btn-sm btn-danger",
+                                      :style => "margin: 10px 0;" %>
+    <% end %>
+      <%= link_to "Return to posts", posts_path,
                                   :class => "btn btn-sm btn-primary" %>
   </div>
 

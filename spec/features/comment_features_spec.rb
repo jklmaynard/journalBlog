@@ -3,9 +3,11 @@ require 'rails_helper'
 describe 'Comment functionality' do
   let (:post) {FactoryGirl.create(:post)}
   let (:comment) {FactoryGirl.create(:comment)}
+  let (:user) {FactoryGirl.create(:user)}
 
   it 'will allow a user to add a comment to a post' do
     post
+    sign_in(user)
     visit post_path(post)
     click_on "Add Comment"
     fill_in "Body", :with => "Some comment"
@@ -16,6 +18,7 @@ describe 'Comment functionality' do
   it 'will allow a user to edit a comment to a post' do
     post
     comment
+    sign_in(user)
     visit post_path(post)
     click_on "Add Comment"
     add_comment(comment)
@@ -28,6 +31,7 @@ describe 'Comment functionality' do
   it 'will allow a user to delete a comment to a post' do
     post
     comment
+    sign_in(user)
     visit post_path(post)
     click_on "Add Comment"
     add_comment(comment)

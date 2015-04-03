@@ -1,10 +1,13 @@
 require 'rails_helper'
 
 describe "user editing functionality" do
-  let (:post) {FactoryGirl.create(:post)}
+  let (:user) {FactoryGirl.create(:user)}
+  let (:post) {FactoryGirl.create(:post, :user_id => user.id)}
 
   it 'will allow user to edit a post' do
+    user
     post
+    sign_in(user)
     visit post_path(post)
     click_on 'Edit Post'
     fill_in 'Title', :with => "New Title"
@@ -13,7 +16,9 @@ describe "user editing functionality" do
   end
 
   it 'will allow user to delete a post' do
+    user
     post
+    sign_in(user)
     visit post_path(post)
     click_on 'Delete Post'
     expect(page).to have_content "Your post has been deleted!"
