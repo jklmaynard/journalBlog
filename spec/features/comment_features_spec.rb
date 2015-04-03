@@ -20,7 +20,6 @@ describe 'Comment functionality' do
     comment
     sign_in(user)
     visit post_path(post)
-    click_on "Add Comment"
     add_comment(comment)
     click_on "Edit"
     fill_in "Body", :with => "A nice remark"
@@ -33,7 +32,6 @@ describe 'Comment functionality' do
     comment
     sign_in(user)
     visit post_path(post)
-    click_on "Add Comment"
     add_comment(comment)
     click_on "Delete"
     expect(page).to have_no_content comment.body

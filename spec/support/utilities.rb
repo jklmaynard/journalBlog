@@ -6,6 +6,7 @@ def sign_in(user)
 end
 
 def add_comment(comment)
+  click_on 'Add Comment'
   fill_in 'Body', :with => comment.body
   click_on 'Create Comment'
 end

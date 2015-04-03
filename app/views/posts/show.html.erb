@@ -16,10 +16,12 @@
       <% @post.comments.each do |comment| %>
         <div class="col-md-12">
           <%= comment.body %>
-          <%= link_to "Edit", edit_post_comment_path(comment.post_id, comment.id) %>
-          <%= link_to "Delete", post_comment_path(comment.post_id, comment.id),
-                                :data => {:confirm => "Sure you wanna?",
-                                          :method => "delete"} %>
+          <% if comment.user == current_user %>
+            <%= link_to "Edit Comment", edit_post_comment_path(comment.post_id, comment.id) %>
+            <%= link_to "Delete Comment", post_comment_path(comment.post_id, comment.id),
+                                  :data => {:confirm => "Sure you wanna?",
+                                            :method => "delete"} %>
+          <% end %>
         </div>
       <% end %>
     <% end %>
