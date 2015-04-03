@@ -11,23 +11,7 @@
 
 
   <h4>Comments:</h4>
-  <div class="col-md-12" id="comment_list">
-    <% if @post.comments.any? %>
-    <%= render partial: "comment", collection: @post.comments %>
-
-      <% @post.comments.each do |comment| %>
-        <div class="col-md-12">
-          <%= comment.body %>
-          <% if comment.user == current_user %>
-            <%= link_to "Edit Comment", edit_post_comment_path(comment.post_id, comment.id) %>
-            <%= link_to "Delete Comment", post_comment_path(comment.post_id, comment.id),
-                                  :data => {:confirm => "Sure you wanna?",
-                                            :method => "delete"} %>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+  
   <% if user_signed_in? %>
     <div class="col-md-12">
       <%= link_to "Add Comment", new_post_comment_path(@post),
@@ -40,6 +24,14 @@
       <%= link_to "Sign in to comment", new_user_session_path %>
     </div>
   <% end %>
+
+
+  <div class="col-md-12" id="comment_list">
+    <% if @post.comments.any? %>
+    <%= render partial: "comment", collection: @post.comments %>
+    <% end %>
+  </div>
+
 
     <div class="col-md-12">
     <% if @post.user == current_user %>

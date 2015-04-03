@@ -1,0 +1,15 @@
+
+<div class="panel panel-primary" id="comment_panel_<%= comment.id %>">
+  <div class="panel-heading">
+  <%= comment.user.email %>
+  </div>
+  <div class="panel-body">
+    <%= comment.body %>
+    <% if comment.user == current_user %>
+      <%= link_to "Edit Comment", edit_post_comment_path(comment.post_id, comment.id) %>
+      <%= link_to "Delete Comment", post_comment_path(comment.post_id, comment.id),
+            :data => {:confirm => "Sure you wanna?",
+            :method => "delete"} %>
+    <% end %>
+  </div>
+</div>
