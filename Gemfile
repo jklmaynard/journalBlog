@@ -23,6 +23,8 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'launchy'
+  gem 'pry'
 
 end
 
@@ -30,6 +32,6 @@ group :test do
   gem 'shoulda-matchers'
 end
 
-group :production do 
+group :production do
   gem 'rails_12factor'
 end

@@ -7,7 +7,7 @@ describe 'Comment functionality' do
   it 'will allow a user to add a comment to a post' do
     post
     visit post_path(post)
-    click_on "Add comment"
+    click_on "Add Comment"
     fill_in "Body", :with => "Some comment"
     click_on "Create Comment"
     expect(page).to have_content "Your comment is posted!"
@@ -17,6 +17,8 @@ describe 'Comment functionality' do
     post
     comment
     visit post_path(post)
+    click_on "Add Comment"
+    add_comment(comment)
     click_on "Edit"
     fill_in "Body", :with => "A nice remark"
     click_on "Update Comment"
@@ -27,6 +29,8 @@ describe 'Comment functionality' do
     post
     comment
     visit post_path(post)
+    click_on "Add Comment"
+    add_comment(comment)
     click_on "Delete"
     expect(page).to have_no_content comment.body
   end

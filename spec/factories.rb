@@ -1,17 +1,20 @@
-FactoryGirl.define do  factory :user do
-    
+FactoryGirl.define do
+
+  factory(:user) do
+    sequence(:email) { |n| "jklm#{n}@jklm.com"}
+    password("12345678")
   end
 
 
   factory(:post) do
     title('This post')
     body('Some text')
-    id(1)
+    user
   end
 
   factory(:comment) do
     body('A mean remark')
-    post_id(1)
-    id(1)
+    user
+    post
   end
 end
