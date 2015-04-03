@@ -20,8 +20,10 @@ group :development do
 end
 
 group :test, :development do
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'factory_girl_rails'
   gem 'launchy'
   gem 'pry'
