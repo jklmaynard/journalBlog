@@ -10,9 +10,11 @@
   </div>
 
 
+  <h4>Comments:</h4>
   <div class="col-md-12" id="comment_list">
     <% if @post.comments.any? %>
-      <h4>Comments:</h4>
+    <%= render partial: "comment", collection: @post.comments %>
+
       <% @post.comments.each do |comment| %>
         <div class="col-md-12">
           <%= comment.body %>
